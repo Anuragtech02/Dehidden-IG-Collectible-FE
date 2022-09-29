@@ -1,3 +1,5 @@
+import { Button } from "../components";
+import BottomSheet from "../components/BottomSheet";
 import { MainLayout } from "../layouts";
 import styles from "./Home.module.scss";
 import { images, icons } from "../assets/";

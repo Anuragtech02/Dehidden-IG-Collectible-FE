@@ -1,0 +1,31 @@
+@import "../../styles/commons.scss";
+
+.container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 10px 10px 0 0;
+  background-color: #262626;
+
+  > .marker {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 5px;
+    background-color: #acacac;
+    border-radius: 10px;
+  }
+
+  .main {
+    padding: 1.6rem;
+    margin-top: 1.6rem;
+    @extend .flexRow;
+    gap: 1.6rem;
+  }
+}
