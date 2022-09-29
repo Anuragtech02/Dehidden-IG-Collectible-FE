@@ -1,0 +1,64 @@
+@import "../styles/commons.scss";
+
+.container {
+  color: var(--clr-white);
+  min-height: 100vh;
+  * {
+    color: var(--clr-white);
+  }
+  background-color: var(--clr-bg-dark);
+}
+
+.nftStoryContainer {
+  @extend .flexCol;
+  margin-right: 0.5rem;
+  p {
+    margin-top: 0.3rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+}
+.nftStories {
+  width: 100%;
+  overflow: auto;
+  margin: auto;
+  padding: 10px;
+
+  @extend .flexRow;
+  .nftStory {
+    -webkit-user-select: none;
+    user-select: none;
+    border: 1px solid white;
+    @extend .flexRow;
+    align-items: center;
+    border-radius: 50%;
+    padding: 2px;
+    cursor: pointer;
+  }
+}
+
+.personInfo {
+  padding: 10px;
+  @extend .flexRow;
+  .right {
+    @extend .flexCol;
+    align-items: flex-start;
+    margin-left: 0.5rem;
+  }
+  .name {
+    @extend .flexRow;
+    p {
+      margin-right: 0.4rem;
+      line-height: 150%;
+    }
+  }
+  .heading {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .subHeading {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--clr-grey);
+  }
+}

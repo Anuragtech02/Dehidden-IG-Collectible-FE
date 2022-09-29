@@ -6,7 +6,6 @@ const MainLayout = ({ children }) => {
     <div className={styles.container}>
       <main>{children}</main>
       <BottomNavigation />
-      <div className={styles.hello}>hello</div>
     </div>
   );
 };

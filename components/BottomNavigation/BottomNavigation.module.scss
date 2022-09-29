@@ -1,1 +1,19 @@
 @import "../../styles/commons.scss";
+
+.container {
+  background-color: var(--clr-bg-dark);
+  @extend .flexRow;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  .icon {
+    flex: 1;
+    @extend .flexRow;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    padding: 1rem;
+  }
+}
