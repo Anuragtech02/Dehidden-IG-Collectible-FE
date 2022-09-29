@@ -1,0 +1,27 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+$breakpoint-lg: 1600px; //Large
+$breakpoint-rg: 1360px; //Regular
+$breakpoint-sm: 400px; //Small
+
+:root {
+}
+
+html {
+  font-size: 15px;
+  @media screen and (max-width: $breakpoint-lg) {
+    font-size: 13px;
+  }
+  @media screen and (max-width: $breakpoint-rg) {
+    font-size: 13px;
+  }
+  @media screen and (max-width: $breakpoint-sm) {
+    font-size: 12px;
+  }
+}
