@@ -24,6 +24,7 @@ import gridIcon from "../assets/icons/gridIcon.svg";
 import tickInPolygon from "../assets/icons/tickInPolygon.svg";
 import redHeart from "../assets/icons/redHeart.svg";
 import clsx from "clsx";
+import { useRouter } from "next/router";
 
 export default function Home() {
   return (
@@ -74,6 +75,7 @@ const NFTStories = [
 
 const Profile = () => {
   const [currentTabIndex, setCurrentTabIndex] = React.useState(0);
+  const router = useRouter();
   return (
     <div className={styles.container}>
       <PersonInfo />
@@ -106,7 +108,12 @@ const Profile = () => {
         </Box>
       </div>
       <div className={clsx(styles.maxWidthContainer, styles.buttonContainer)}>
-        <Button classes={styles.claimButton}>Claim This Collectible</Button>
+        <Button
+          onClick={() => router.push("/claim/0")}
+          classes={styles.claimButton}
+        >
+          Claim This Collectible
+        </Button>
       </div>
     </div>
   );
