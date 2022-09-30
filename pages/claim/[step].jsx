@@ -9,6 +9,9 @@ import BottomSheet from "../../components/BottomSheet";
 import { useContext, useEffect, useState } from "react";
 import GlobalContext from "../../utils/contexts/GlobalContext";
 
+//images
+import claimed from "../../assets/images/claimed.png";
+
 const Claim = () => {
   const { step } = useRouter().query;
 
@@ -37,6 +40,12 @@ const Claim = () => {
           <Step3 step={3} />
         </WithActiveTab>
       );
+    case "4":
+      return (
+        <WithActiveTab>
+          <Step4 step={4} />
+        </WithActiveTab>
+      );
     default:
       return <Step0 />;
   }
@@ -60,7 +69,7 @@ const WithActiveTab = ({ step, children }) => {
 const Step0 = () => {
   const router = useRouter();
   return (
-    <MainLayout classes={[styles.container]}>
+    <MainLayout classes={[styles.container, styles.step]}>
       <h1>
         🔥🎉 <br />
         Your Collectible is ready to claim
@@ -80,7 +89,7 @@ const Step1 = ({ nft }) => {
   const router = useRouter();
 
   return (
-    <section>
+    <section className={styles.step}>
       <h1>
         Connect.
         <br />
@@ -111,13 +120,14 @@ const Step1 = ({ nft }) => {
 
 const Step2 = () => {
   const { walletAddress, setWalletAddress, nft } = useContext(GlobalContext);
+  const router = useRouter();
 
   function handleClickCoinbase() {
     setWalletAddress("TEMP_VALUE");
   }
 
   return (
-    <section>
+    <section className={styles.step}>
       {!walletAddress ? (
         <>
           <h1>
@@ -147,7 +157,12 @@ const Step2 = () => {
           </div>
           <BottomSheet classes={[styles.bottomSheet, styles.step2BottomSheet]}>
             <h4>Wallet Connected!</h4>
-            <Button classes={[styles.btn]}>Add To Wallet</Button>
+            <Button
+              onClick={() => router.push("/claim/3")}
+              classes={[styles.btn]}
+            >
+              Add To Wallet
+            </Button>
           </BottomSheet>
         </>
       )}
@@ -159,7 +174,6 @@ const Step3 = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const { nft, walletAddress } = useContext(GlobalContext);
-
   useEffect(() => {
     if (!nft) {
       router.push("/claim/0");
@@ -174,10 +188,12 @@ const Step3 = () => {
     }, 3000);
   }, [nft, walletAddress, router]);
 
-  function onClickAddToWallet() {}
+  function onClickAddToWallet() {
+    router.push("/claim/4");
+  }
 
   return (
-    <section>
+    <section className={styles.step}>
       <h1>
         Spicing up your <br /> wallet
       </h1>
@@ -187,6 +203,22 @@ const Step3 = () => {
         <Button classes={[styles.btn]} onClick={onClickAddToWallet}>
           Add To Wallet
         </Button>
+      </BottomSheet>
+    </section>
+  );
+};
+
+const Step4 = () => {
+  const [loading, setLoading] = useState(true);
+
+  return (
+    <section className={styles.step}>
+      <h1>Yay! Now the collectible is in your wallet!</h1>
+      <Image src={claimed} alt="NFT" layout="responsive" />
+
+      <BottomSheet classes={[styles.bottomSheet, styles.step2BottomSheet]}>
+        <h4>Collectible Added!</h4>
+        <Button classes={[styles.btn]}>Great!</Button>
       </BottomSheet>
     </section>
   );
