@@ -110,10 +110,16 @@ const Step1 = ({ nft }) => {
 };
 
 const Step2 = () => {
+  const router = useRouter();
+
   const { walletAddress, setWalletAddress, nft } = useContext(GlobalContext);
 
   function handleClickCoinbase() {
     setWalletAddress("TEMP_VALUE");
+  }
+
+  function onClickAddToWallet() {
+    router.push("/claim/3");
   }
 
   return (
@@ -147,7 +153,9 @@ const Step2 = () => {
           </div>
           <BottomSheet classes={[styles.bottomSheet, styles.step2BottomSheet]}>
             <h4>Wallet Connected!</h4>
-            <Button classes={[styles.btn]}>Add To Wallet</Button>
+            <Button classes={[styles.btn]} onClick={onClickAddToWallet}>
+              Add To Wallet
+            </Button>
           </BottomSheet>
         </>
       )}
@@ -169,9 +177,9 @@ const Step3 = () => {
       router.push("/claim/2");
       return;
     }
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 3000);
   }, [nft, walletAddress, router]);
 
   function onClickAddToWallet() {}
