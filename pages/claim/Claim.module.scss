@@ -57,7 +57,7 @@
         border-radius: 5px;
         background-color: rgba(255, 255, 255, 0.5);
       }
-      .active {
+      .activeTab {
         background-color: var(--clr-white);
       }
     }
@@ -81,6 +81,18 @@
         }
         .btn {
           margin-top: 1rem !important;
+        }
+      }
+      .nftImage {
+        margin-top: 2rem;
+        > span {
+          border-radius: 15px;
+        }
+      }
+      .step2BottomSheet {
+        h4 {
+          text-align: center;
+          color: var(--clr-white);
         }
       }
     }

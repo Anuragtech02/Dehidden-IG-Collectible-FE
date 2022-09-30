@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Button, RoundedButton } from "../../components";
+import { Button, Loading, RoundedButton } from "../../components";
 import { MainLayout } from "../../layouts";
 import styles from "./Claim.module.scss";
 import walletImage from "../../assets/images/connectWallet.png";
 import getStartedWalletImage from "../../assets/images/getStarted.png";
 import BottomSheet from "../../components/BottomSheet";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import GlobalContext from "../../utils/contexts/GlobalContext";
 
 const Claim = () => {
@@ -48,9 +48,9 @@ const WithActiveTab = ({ step, children }) => {
   return (
     <MainLayout classes={[styles.withActiveTabContainer]}>
       <div className={styles.tabs}>
-        <div className={step >= 1 ? styles.active : ""}></div>
-        <div className={step >= 2 ? styles.active : ""}></div>
-        <div className={step == 3 ? styles.active : ""}></div>
+        <div className={step >= 1 ? styles.activeTab : ""}></div>
+        <div className={step >= 2 ? styles.activeTab : ""}></div>
+        <div className={step == 3 ? styles.activeTab : ""}></div>
       </div>
       <div className={styles.content}>{children}</div>
     </MainLayout>
@@ -142,7 +142,9 @@ const Step2 = () => {
             <br />
             to your wallet
           </h1>
-          <Image src={nft?.image} alt="nft" layout="responsive" />
+          <div className={styles.nftImage}>
+            <Image src={nft?.image} alt="nft" layout="responsive" />
+          </div>
           <BottomSheet classes={[styles.bottomSheet, styles.step2BottomSheet]}>
             <h4>Wallet Connected!</h4>
             <Button classes={[styles.btn]}>Add To Wallet</Button>
@@ -154,15 +156,38 @@ const Step2 = () => {
 };
 
 const Step3 = () => {
+  const router = useRouter();
+  const [loading, setLoading] = useState(true);
+  const { nft, walletAddress } = useContext(GlobalContext);
+
+  useEffect(() => {
+    if (!nft) {
+      router.push("/claim/0");
+      return;
+    }
+    if (!walletAddress) {
+      router.push("/claim/2");
+      return;
+    }
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, [nft, walletAddress, router]);
+
+  function onClickAddToWallet() {}
+
   return (
     <section>
       <h1>
-        🔥🎉 <br />
-        Your Collectible is ready to claim
+        Spicing up your <br /> wallet
       </h1>
-      <RoundedButton variant="solid" classes={[styles.nextBtn]}>
-        What&apos;s Next
-      </RoundedButton>
+      {loading && <Loading text="Monkey business going on" />}
+      <BottomSheet classes={[styles.bottomSheet, styles.step2BottomSheet]}>
+        <h4>Wallet Connected!</h4>
+        <Button classes={[styles.btn]} onClick={onClickAddToWallet}>
+          Add To Wallet
+        </Button>
+      </BottomSheet>
     </section>
   );
 };
