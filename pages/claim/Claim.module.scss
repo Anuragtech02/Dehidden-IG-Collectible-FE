@@ -1,1 +1,72 @@
 @import "../../styles/commons.scss";
+
+.container {
+  main {
+    width: 100%;
+    min-height: 100vh;
+    @extend .flexCol;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1.3rem;
+    background: radial-gradient(
+      287.5% 3366.11% at -7.68% 202.5%,
+      #f49353 13.81%,
+      #e32c7f 37.41%,
+      #8f37b1 77.19%,
+      #623ec7 96.57%
+    );
+    h1 {
+      color: white;
+      line-height: 3rem;
+    }
+  }
+  .nextBtn {
+    position: absolute;
+    bottom: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.withActiveTabContainer {
+  width: 100%;
+  min-height: 100vh;
+  display: block;
+  background: radial-gradient(
+    287.5% 3366.11% at -7.68% 202.5%,
+    #f49353 13.81%,
+    #e32c7f 37.41%,
+    #8f37b1 77.19%,
+    #623ec7 96.57%
+  );
+  h1 {
+    color: white;
+    line-height: 3rem;
+  }
+  main {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 1rem;
+    .tabs {
+      @extend .flexRow;
+      justify-content: space-between;
+      gap: 0.5rem;
+
+      > div {
+        flex: 1;
+        height: 0.2rem;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+      .active {
+        background-color: var(--clr-white);
+      }
+    }
+    .content {
+      margin-top: 2rem;
+
+      .bottomSheet {
+        margin-bottom: var(--nav-height);
+      }
+    }
+  }
+}

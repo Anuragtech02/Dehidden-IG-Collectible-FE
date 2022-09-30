@@ -1,8 +1,9 @@
+import clsx from "clsx";
 import styles from "./BottomSheet.module.scss";
 
-const BottomSheet = ({ children }) => {
+const BottomSheet = ({ children, classes }) => {
   return (
-    <div className={styles.container}>
+    <div className={clsx(styles.container, classes)}>
       <span className={styles.marker}></span>
       <div className={styles.main}>{children}</div>
     </div>

@@ -6,9 +6,10 @@ const RoundedButton = ({
   variant = "primary",
   leftIcon,
   rightIcon,
+  classes,
 }) => {
   return (
-    <button className={clsx(styles.btn, styles[variant])}>
+    <button className={clsx(styles.btn, styles[variant], classes)}>
       <span>
         <span className={styles.leftIcon}>{leftIcon}</span>
         <span>{children}</span>
