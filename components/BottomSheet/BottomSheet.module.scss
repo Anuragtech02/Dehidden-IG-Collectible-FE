@@ -11,6 +11,7 @@
   border-radius: 10px 10px 0 0;
   background-color: #262626;
   z-index: 2;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
 
   > .marker {
     position: absolute;
@@ -26,7 +27,5 @@
   .main {
     padding: 1.6rem;
     margin-top: 1.6rem;
-    @extend .flexRow;
-    gap: 1.6rem;
   }
 }

@@ -3,11 +3,16 @@ import { useRouter } from "next/router";
 import { Button, RoundedButton } from "../../components";
 import { MainLayout } from "../../layouts";
 import styles from "./Claim.module.scss";
-import walletImage from "../../assets/images/getStarted.png";
+import walletImage from "../../assets/images/connectWallet.png";
+import getStartedWalletImage from "../../assets/images/getStarted.png";
 import BottomSheet from "../../components/BottomSheet";
+import { useContext } from "react";
+import GlobalContext from "../../utils/contexts/GlobalContext";
 
 const Claim = () => {
   const { step } = useRouter().query;
+
+  const { nft } = useContext(GlobalContext);
 
   console.log({ step });
 
@@ -17,7 +22,7 @@ const Claim = () => {
     case "1":
       return (
         <WithActiveTab>
-          <Step1 step={1} />
+          <Step1 step={1} nft={nft} />
         </WithActiveTab>
       );
     case "2":
@@ -66,7 +71,7 @@ const Step0 = () => {
   );
 };
 
-const Step1 = () => {
+const Step1 = ({ nft }) => {
   return (
     <section>
       <h1>
@@ -76,24 +81,65 @@ const Step1 = () => {
         <br />
         Collect.
       </h1>
-      <Image src={walletImage} alt="wallet" layout="responsive" />
+      <Image src={getStartedWalletImage} alt="wallet" layout="responsive" />
       <BottomSheet classes={[styles.bottomSheet]}>
-        <Button>Let&apos;s Get Started</Button>
+        <div className={styles.details}>
+          <Image
+            src={nft?.image}
+            alt="nft"
+            layout="fixed"
+            width={60}
+            height={60}
+            objectFit="contain"
+          />
+          <p>Claim {nft?.owner?.name}&apos;s exclusive collectible now!</p>
+        </div>
+        <Button classes={[styles.btn]}>Let&apos;s Get Started</Button>
       </BottomSheet>
     </section>
   );
 };
 
 const Step2 = () => {
+  const { walletAddress, setWalletAddress, nft } = useContext(GlobalContext);
+
+  function handleClickCoinbase() {
+    setWalletAddress("TEMP_VALUE");
+  }
+
   return (
     <section>
-      <h1>
-        🔥🎉 <br />
-        Your Collectible is ready to claim
-      </h1>
-      <RoundedButton variant="solid" classes={[styles.nextBtn]}>
-        What&apos;s Next
-      </RoundedButton>
+      {!walletAddress ? (
+        <>
+          <h1>
+            Connect or
+            <br />
+            select your
+            <br />
+            wallet
+          </h1>
+          <Image src={walletImage} alt="wallet" layout="responsive" />
+          <BottomSheet classes={[styles.bottomSheet, styles.step2BottomSheet]}>
+            <Button onClick={handleClickCoinbase}>Coinbase</Button>
+            <Button variant="secondary" classes={[styles.btn]}>
+              Create Wallet
+            </Button>
+          </BottomSheet>
+        </>
+      ) : (
+        <>
+          <h1>
+            Add Collectible
+            <br />
+            to your wallet
+          </h1>
+          <Image src={nft?.image} alt="nft" layout="responsive" />
+          <BottomSheet classes={[styles.bottomSheet, styles.step2BottomSheet]}>
+            <h4>Wallet Connected!</h4>
+            <Button classes={[styles.btn]}>Add To Wallet</Button>
+          </BottomSheet>
+        </>
+      )}
     </section>
   );
 };
