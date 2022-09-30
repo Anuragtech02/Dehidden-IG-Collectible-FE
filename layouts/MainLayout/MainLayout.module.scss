@@ -1,5 +1,7 @@
 @import "../../styles/commons.scss";
 
 .container {
+  @extend .flexRow;
+  justify-content: center;
   position: relative;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { icons } from "../../assets";
 import styles from "./BottomNavigation.module.scss";
 import Image from "next/image";
+import clsx from "clsx";
 
 const { leftArrow, rightArrow, share, clock, refresh } = icons;
 
@@ -31,7 +32,7 @@ const navigations = [
 
 const BottomNavigation = () => {
   return (
-    <div className={styles.container}>
+    <div className={clsx(styles.container, styles.maxWidthContainer)}>
       {navigations?.map((navigation, index) => {
         return (
           <div key={index} className={styles.icon}>

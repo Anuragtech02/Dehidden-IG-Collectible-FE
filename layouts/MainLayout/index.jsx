@@ -4,8 +4,10 @@ import { BottomNavigation } from "../../components";
 const MainLayout = ({ children }) => {
   return (
     <div className={styles.container}>
-      <main>{children}</main>
-      <BottomNavigation />
+      <div className={styles.maxWidthContainer}>
+        <main>{children}</main>
+        <BottomNavigation />
+      </div>
     </div>
   );
 };

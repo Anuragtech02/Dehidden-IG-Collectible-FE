@@ -9,7 +9,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Tabs, Tab, Box } from "@mui/material";
 import styled from "@emotion/styled";
 
-const { profile, diamond, candy, rocket, cat, hand } = images;
+const { profile, diamond, candy, rocket, cat, hand, nft } = images;
 const { blueTick, gridIcon, tickInPolygon } = icons;
 
 export default function Home() {
@@ -83,15 +83,23 @@ const Profile = () => {
             </StyledTabs>
           </Box>
           <TabPanel value={currentTabIndex} index={0}>
-            Item One
+            <FirstTab />
           </TabPanel>
           <TabPanel value={currentTabIndex} index={1}>
-            Item Two
+            <SecondTab />
           </TabPanel>
         </Box>
       </div>
     </div>
   );
+};
+
+const FirstTab = () => {
+  return <div>Hello 1</div>;
+};
+
+const SecondTab = () => {
+  return <div>Hello 2</div>;
 };
 
 const TabPanel = (props) => {
@@ -105,8 +113,7 @@ const TabPanel = (props) => {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-      <p>hello</p>
+      {value === index && <Box sx={{}}>{children}</Box>}
     </div>
   );
 };
