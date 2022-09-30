@@ -58,6 +58,7 @@ const WithActiveTab = ({ step, children }) => {
 };
 
 const Step0 = () => {
+  const router = useRouter();
   return (
     <MainLayout classes={[styles.container]}>
       <h1>
@@ -65,7 +66,7 @@ const Step0 = () => {
         Your Collectible is ready to claim
       </h1>
       <RoundedButton
-        onClick={() => {}}
+        onClick={() => router.push("/claim/1")}
         variant="solid"
         classes={[styles.nextBtn]}
       >
@@ -76,6 +77,8 @@ const Step0 = () => {
 };
 
 const Step1 = ({ nft }) => {
+  const router = useRouter();
+
   return (
     <section>
       <h1>
@@ -98,7 +101,9 @@ const Step1 = ({ nft }) => {
           />
           <p>Claim {nft?.owner?.name}&apos;s exclusive collectible now!</p>
         </div>
-        <Button classes={[styles.btn]}>Let&apos;s Get Started</Button>
+        <Button onClick={() => router.push("/claim/2")} classes={[styles.btn]}>
+          Let&apos;s Get Started
+        </Button>
       </BottomSheet>
     </section>
   );
