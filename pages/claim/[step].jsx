@@ -64,7 +64,11 @@ const Step0 = () => {
         🔥🎉 <br />
         Your Collectible is ready to claim
       </h1>
-      <RoundedButton variant="solid" classes={[styles.nextBtn]}>
+      <RoundedButton
+        onClick={() => {}}
+        variant="solid"
+        classes={[styles.nextBtn]}
+      >
         What&apos;s Next
       </RoundedButton>
     </MainLayout>
