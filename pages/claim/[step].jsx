@@ -54,7 +54,7 @@ const Claim = () => {
       );
     case "4":
       return (
-        <WithActiveTab>
+        <WithActiveTab step={4}>
           <Step4 step={4} />
         </WithActiveTab>
       );
