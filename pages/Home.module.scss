@@ -1,12 +1,19 @@
 @import "../styles/commons.scss";
 
 .container {
+  padding-bottom: calc(var(--nav-height) * 2);
   color: var(--clr-white);
   min-height: 100vh;
   * {
     color: var(--clr-white);
   }
   background-color: var(--clr-bg-dark);
+}
+.buttonContainer {
+  position: fixed;
+  bottom: var(--nav-height);
+  width: 100%;
+  padding: 0 10px;
 }
 
 .nftStoryContainer {
@@ -42,10 +49,18 @@
   }
 }
 
+.tabHeader {
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: var(--clr-bg-dark);
+  top: 0;
+  z-index: 2;
+}
 .tab {
   .imageContainer {
     width: 100%;
     img {
+      -webkit-user-select: none !important;
       user-select: none !important;
     }
   }

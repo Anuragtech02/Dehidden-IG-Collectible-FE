@@ -22,6 +22,10 @@ $breakpoint-sm: 600px; //Small
   --nav-height: 70px;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 html {
   font-size: 16px;
   // @media screen and (max-width: $breakpoint-lg) {

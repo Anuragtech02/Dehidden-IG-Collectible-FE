@@ -23,6 +23,7 @@ import blueTick from "../assets/icons/blueTick.svg";
 import gridIcon from "../assets/icons/gridIcon.svg";
 import tickInPolygon from "../assets/icons/tickInPolygon.svg";
 import redHeart from "../assets/icons/redHeart.svg";
+import clsx from "clsx";
 
 export default function Home() {
   return (
@@ -84,16 +85,18 @@ const Profile = () => {
       {/* <ConnectButton /> */}
       <div className={styles.tabs}>
         <Box sx={{ width: "100%" }}>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-            <StyledTabs
-              value={currentTabIndex}
-              onChange={(_, index) => setCurrentTabIndex(index)}
-              aria-label="basic tabs example"
-            >
-              <Tab icon={<Image src={tickInPolygon} alt="Profile Tab" />} />
-              <Tab icon={<Image src={gridIcon} alt="Grid Tab" />} />
-            </StyledTabs>
-          </Box>
+          <div className={styles.tabHeader}>
+            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+              <StyledTabs
+                value={currentTabIndex}
+                onChange={(_, index) => setCurrentTabIndex(index)}
+                aria-label="basic tabs example"
+              >
+                <Tab icon={<Image src={tickInPolygon} alt="Profile Tab" />} />
+                <Tab icon={<Image src={gridIcon} alt="Grid Tab" />} />
+              </StyledTabs>
+            </Box>
+          </div>
           <TabPanel value={currentTabIndex} index={0}>
             <FirstTab />
           </TabPanel>
@@ -101,6 +104,9 @@ const Profile = () => {
             <SecondTab />
           </TabPanel>
         </Box>
+      </div>
+      <div className={clsx(styles.maxWidthContainer, styles.buttonContainer)}>
+        <Button classes={styles.claimButton}>Claim This Collectible</Button>
       </div>
     </div>
   );
