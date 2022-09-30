@@ -23,6 +23,7 @@ import blueTick from "../assets/icons/blueTick.svg";
 import gridIcon from "../assets/icons/gridIcon.svg";
 import tickInPolygon from "../assets/icons/tickInPolygon.svg";
 import redHeart from "../assets/icons/redHeart.svg";
+import clsx from "clsx";
 
 export default function Home() {
   return (
@@ -104,7 +105,7 @@ const Profile = () => {
           </TabPanel>
         </Box>
       </div>
-      <div className={styles.buttonContainer}>
+      <div className={clsx(styles.maxWidthContainer, styles.buttonContainer)}>
         <Button classes={styles.claimButton}>Claim This Collectible</Button>
       </div>
     </div>
