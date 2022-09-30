@@ -188,9 +188,9 @@ const Step3 = () => {
       router.push("/claim/2");
       return;
     }
-    // setTimeout(() => {
-    //   setLoading(false);
-    // }, 3000);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
   }, [nft, walletAddress, router]);
 
   function onClickAddToWallet() {
@@ -202,13 +202,17 @@ const Step3 = () => {
       <h1>
         Spicing up your <br /> wallet
       </h1>
-      {loading && <Loading text="Monkey business going on" />}
-      <BottomSheet classes={[styles.bottomSheet, styles.step2BottomSheet]}>
-        <h4>Wallet Connected!</h4>
-        <Button classes={[styles.btn]} onClick={onClickAddToWallet}>
-          Add To Wallet
-        </Button>
-      </BottomSheet>
+      <div className={styles.loadingContainer}>
+        <Loading success={!loading} text="Monkey business going on" />
+      </div>
+      {!loading && (
+        <BottomSheet classes={[styles.bottomSheet, styles.step2BottomSheet]}>
+          <h4>Wallet Connected!</h4>
+          <Button classes={[styles.btn]} onClick={onClickAddToWallet}>
+            Proceed
+          </Button>
+        </BottomSheet>
+      )}
     </section>
   );
 };
