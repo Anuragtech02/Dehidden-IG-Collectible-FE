@@ -10,35 +10,40 @@ import { useContext, useEffect, useState } from "react";
 import GlobalContext from "../../utils/contexts/GlobalContext";
 
 const Claim = () => {
-  const { step } = useRouter().query;
+  const router = useRouter();
+  const { step } = router.query;
 
   const { nft } = useContext(GlobalContext);
 
-  console.log({ step });
+  useEffect(() => {
+    if (!["0", "1", "2", "3", "4"].includes(step)) {
+      router.push("/claim/0");
+    }
+  }, [step, router]);
 
   switch (step) {
     case "0":
       return <Step0 />;
     case "1":
       return (
-        <WithActiveTab>
+        <WithActiveTab step={1}>
           <Step1 step={1} nft={nft} />
         </WithActiveTab>
       );
     case "2":
       return (
-        <WithActiveTab>
+        <WithActiveTab step={2}>
           <Step2 step={2} />
         </WithActiveTab>
       );
     case "3":
       return (
-        <WithActiveTab>
+        <WithActiveTab step={3}>
           <Step3 step={3} />
         </WithActiveTab>
       );
     default:
-      return <Step0 />;
+      return;
   }
 };
 
@@ -48,7 +53,7 @@ const WithActiveTab = ({ step, children }) => {
   return (
     <MainLayout classes={[styles.withActiveTabContainer]}>
       <div className={styles.tabs}>
-        <div className={step >= 1 ? styles.activeTab : ""}></div>
+        <div className={step >= 1 ? styles.activeTab : styles.tab}></div>
         <div className={step >= 2 ? styles.activeTab : ""}></div>
         <div className={step == 3 ? styles.activeTab : ""}></div>
       </div>
