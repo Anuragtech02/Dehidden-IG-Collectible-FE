@@ -12,6 +12,13 @@ import GlobalContext from "../../utils/contexts/GlobalContext";
 //images
 import claimed from "../../assets/images/claimed.png";
 
+import whatsapp from "../../assets/icons/whatsapp.png";
+import facebook from "../../assets/icons/facebook.png";
+import snapchat from "../../assets/icons/snapchat.png";
+import messages from "../../assets/icons/messages.png";
+import messenger from "../../assets/icons/messenger.png";
+import link from "../../assets/icons/link.png";
+
 const Claim = () => {
   const { step } = useRouter().query;
 
@@ -228,6 +235,62 @@ const Step4 = () => {
       <BottomSheet classes={[styles.bottomSheet, styles.step2BottomSheet]}>
         <h4>Collectible Added!</h4>
         <Button classes={[styles.btn]}>Great!</Button>
+        <div className={styles.icons}>
+          <div className={styles.icon}>
+            <Image
+              src={link}
+              alt="link"
+              layout="fixed"
+              width={30}
+              height={30}
+            />
+          </div>
+          <div className={styles.icon}>
+            <Image
+              src={whatsapp}
+              alt="whatsapp"
+              layout="fixed"
+              width={30}
+              height={30}
+            />
+          </div>
+          <div className={styles.icon}>
+            <Image
+              src={facebook}
+              alt="facebook"
+              layout="fixed"
+              width={30}
+              height={30}
+            />
+          </div>
+          <div className={styles.icon}>
+            <Image
+              src={messenger}
+              alt="messanger"
+              layout="fixed"
+              width={30}
+              height={30}
+            />
+          </div>
+          <div className={styles.icon}>
+            <Image
+              src={snapchat}
+              alt="snapchat"
+              layout="fixed"
+              width={30}
+              height={30}
+            />
+          </div>
+          <div className={styles.icon}>
+            <Image
+              src={messages}
+              alt="messages"
+              layout="fixed"
+              width={30}
+              height={30}
+            />
+          </div>
+        </div>
       </BottomSheet>
     </section>
   );

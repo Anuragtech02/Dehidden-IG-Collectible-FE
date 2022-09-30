@@ -98,8 +98,29 @@
     }
   }
 }
+.step {
+  .icons {
+    width: 100%;
+    overflow: auto;
+    margin-top: 1rem;
+    @extend .flexRow;
+    span {
+      filter: invert(1);
+      transform: scale(0.8);
+    }
+  }
+  .icon {
+    cursor: pointer;
+    @extend .flexRow;
+    margin-right: 0.4rem;
+    justify-content: center;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 50%;
+    background-color: #363636;
+  }
+}
 .loadingContainer {
-  // background-color: red;
   position: fixed;
   top: 40%;
   width: 100%;
