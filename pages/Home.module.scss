@@ -19,13 +19,15 @@
   }
 }
 .nftStories {
-  width: 100%;
+  max-width: 100%;
   overflow: auto;
   margin: auto;
-  padding: 10px;
-
+  margin: 10px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
   @extend .flexRow;
   .nftStory {
+    min-width: 50px;
     -webkit-user-select: none;
     user-select: none;
     border: 1px solid white;
@@ -35,10 +37,14 @@
     padding: 2px;
     cursor: pointer;
   }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .personInfo {
-  padding: 10px;
+  padding-top: 2rem;
+  padding: 1.5rem 10px;
   @extend .flexRow;
   .right {
     @extend .flexCol;

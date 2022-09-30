@@ -20,6 +20,7 @@ import refresh from "./icons/refresh.svg";
 import share from "./icons/share.svg";
 import smallStar from "./icons/smallStar.svg";
 import whiteTick from "./icons/whiteTick.svg";
+import tickInPolygon from "./icons/tickInPolygon.svg";
 
 export const icons = {
   blueTick,
@@ -31,6 +32,7 @@ export const icons = {
   share,
   smallStar,
   whiteTick,
+  tickInPolygon,
 };
 export const images = {
   addCollectible,
