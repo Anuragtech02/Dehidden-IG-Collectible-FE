@@ -71,7 +71,7 @@ const WithActiveTab = ({ step, children }) => {
       <div className={styles.tabs}>
         <div className={step >= 1 ? styles.activeTab : styles.tab}></div>
         <div className={step >= 2 ? styles.activeTab : ""}></div>
-        <div className={step == 3 ? styles.activeTab : ""}></div>
+        <div className={step >= 3 ? styles.activeTab : ""}></div>
       </div>
       <div className={styles.content}>{children}</div>
     </MainLayout>
