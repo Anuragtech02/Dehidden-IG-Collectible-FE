@@ -4,6 +4,7 @@ import { MainLayout } from "../layouts";
 import styles from "./Home.module.scss";
 import { images, icons } from "../assets/";
 import Image from "next/image";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const { profile, diamond, candy, rocket, cat, hand } = images;
 const { blueTick } = icons;
@@ -48,6 +49,7 @@ const Profile = () => {
           <NFTStory key={index} count={index + 1} {...story} />
         ))}
       </div>
+      <ConnectButton />
     </div>
   );
 };
