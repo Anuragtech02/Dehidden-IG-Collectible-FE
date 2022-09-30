@@ -8,11 +8,13 @@ $width: 100px;
 
   > span {
     color: var(--clr-white);
+    margin-top: 1rem;
   }
 
   .spinner {
     -webkit-animation: rotation 1.35s linear infinite;
     animation: rotation 1.35s linear infinite;
+    stroke: white;
   }
   .circle {
     stroke-dasharray: 180;
